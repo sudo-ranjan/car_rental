@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RentFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0043ff8c;
+            --secondary-color: #0033cc;
+            --text-color: #333;
+            --light-text: #666;
+            --background: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+        }
+
+        /* Navigation Styles */
+        .nav {
+            background: var(--white);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav .item {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 40px 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--light-text);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .story-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .story-content p {
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .story-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--white);
+            padding: 80px 40px;
+            margin-bottom: 80px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .value-card p {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 60px 40px;
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 80px;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 20px 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section,
+            .values-section {
+                padding: 60px 20px;
+            }
+
+            .nav .item {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="item">
+            <a href="index.html">Home</a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="aboutus.html" class="active">About Us</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <div class="item auth-buttons">
+            <div class="guest-view">
+                <a href="signin.html" class="btn">Sign In</a>
+                <a href="signup.html" class="btn">Sign Up</a>
+            </div>
+            <div class="user-view" style="display: none;">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="username">Username</span>
+                </div>
+                <button onclick="handleLogout()" class="btn logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>About RentFlow</h1>
+            <p>Your trusted partner in car rental services, providing exceptional experiences since 2025.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="section-header">
+            <h2>Our Story</h2>
+            <p>Discover how RentFlow became a leading name in the car rental industry.</p>
+        </div>
+
+        <div class="story-section">
+            <div class="story-content">
+                <h3>From Humble Beginnings</h3>
+                <p>Founded in 2025, RentFlow started with a simple mission: to make car rental accessible, affordable, and enjoyable for everyone. What began as a small local service has grown into a trusted name in the industry.</p>
+                <p>Our journey has been marked by continuous innovation, customer-focused service, and a commitment to excellence. We've expanded our fleet, enhanced our technology, and built lasting relationships with our customers.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9yc2NoZSUyMDkxMXxlbnwwfHwwfHx8MA%3D%3D" alt="Our Story">
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header">
+            <h2>Our Values</h2>
+            <p>The principles that guide everything we do at RentFlow.</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Trust & Reliability</h3>
+                <p>We build lasting relationships based on trust and reliability, ensuring our customers always feel secure and supported.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Excellence</h3>
+                <p>We strive for excellence in every aspect of our service, from vehicle maintenance to customer support.</p>
+            </div>
+
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Customer Focus</h3>
+                <p>Our customers are at the heart of everything we do. We listen, adapt, and go the extra mile to ensure satisfaction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Experience RentFlow?</h2>
+            <p>Join thousands of satisfied customers who have discovered the joy of hassle-free car rental.</p>
+            <a href="index.html" class="cta-button">Explore Our Fleet</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Website Terms</a>
+                <a href="contactus.html">Contact Us</a>
+                <a href="/">Privacy Policy</a>
+            </div>
+            <p class="copyright">&copy; 2025 RentFlow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Check login status when page loads
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username');
+            
+            const guestView = document.querySelector('.guest-view');
+            const userView = document.querySelector('.user-view');
+            const usernameSpan = document.querySelector('.username');
+            
+            if (isLoggedIn === 'true' && username) {
+                guestView.style.display = 'none';
+                userView.style.display = 'flex';
+                usernameSpan.textContent = username;
+            } else {
+                guestView.style.display = 'flex';
+                userView.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            checkLoginStatus();
+        }
+
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+</html>

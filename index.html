@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentFlow - Easy Car Rental</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="item">
+            <a href="index.html" class="active">Home</a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="blog.html">Blog</a>
+        </div>
+        <div class="item auth-buttons">
+            <div class="guest-view">
+                <a href="signin.html" class="btn">Sign In</a>
+                <a href="signup.html" class="btn">Sign Up</a>
+            </div>
+            <div class="user-view" style="display: none;">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="username">Username</span>
+                </div>
+                <button onclick="handleLogout()" class="btn logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Check login status when page loads
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username');
+            
+            const guestView = document.querySelector('.guest-view');
+            const userView = document.querySelector('.user-view');
+            const usernameSpan = document.querySelector('.username');
+            
+            if (isLoggedIn === 'true' && username) {
+                guestView.style.display = 'none';
+                userView.style.display = 'flex';
+                usernameSpan.textContent = username;
+            } else {
+                guestView.style.display = 'flex';
+                userView.style.display = 'none';
+            }
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            checkLoginStatus();
+        }
+
+        // Check login status when page loads
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+
+    <section class="home">
+        <div class="main-sec">
+            <div class="left">
+                <h1>Rent<span>Flow</span></h1>
+                <p class="txt1">Easy And Fast Way To <span>Rent</span> Your Car</p>
+                <p>
+                    Renting your car has never been easier or faster than with our service. With just a few simple steps,
+                    you can have your car listed and ready for potential renters in no time. Our streamlined process ensures
+                    convenience and efficiency, allowing you to maximize the earning potential of your vehicle with minimal effort.
+                </p>
+                <a href="#cars" class="btn">Explore Cars</a>
+            </div>
+            <div class="right">
+                <img src="bmw-22428.png" alt="Luxury Car">
+            </div>
+        </div>
+    </section>
+
+    <section class="car-sec" id="cars">
+        <div class="txt">
+            <p class="txt1">Latest <span>Inventory</span></p>
+        </div>
+
+        <div class="main-sec">
+            <!-- Car Card 1 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D" alt="Lamborghini">
+                <div class="details">
+                    <p class="car-name">Lamborghini Super Car</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <p>(10k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 2 Seats</p>
+                        <p><i class="fa-solid fa-gas-pump"></i> Petrol</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 700 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Sports Performance</p>
+                        <p><i class="fa-solid fa-cogs"></i> Automatic</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Lamborghini Super Car">
+                        <div class="price">
+                            <p>₹10,000/day</p>
+                            <button type="submit" name="book_now" class="btn" onclick="return checkLoginBeforeBooking(event)">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Car Card 2 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1633359064754-804ba55e733f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dmVybmF8ZW58MHx8MHx8fDA%3D" alt="Verna">
+                <div class="details">
+                    <p class="car-name">Verna Car</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <p>(10k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 5 Seats</p>
+                        <p><i class="fa-solid fa-gas-pump"></i> Petrol</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 150 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Comfortable Drive</p>
+                        <p><i class="fa-solid fa-cogs"></i> Manual</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Verna Car">
+                        <div class="price">
+                            <p>₹3,000/day</p>
+                            <button type="submit" name="book_now" class="btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Car Card 3 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVzbGElMjBtb2RlbCUyMHN8ZW58MHx8MHx8fDA%3D" alt="Tesla Model S">
+                <div class="details">
+                    <p class="car-name">Tesla Model S</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <p>(12k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 5 Seats</p>
+                        <p><i class="fa-solid fa-bolt"></i> Electric</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 670 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Luxury Performance</p>
+                        <p><i class="fa-solid fa-cogs"></i> Automatic</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Tesla Model S">
+                        <div class="price">
+                            <p>₹15,000/day</p>
+                            <button type="submit" name="book_now" class="btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Car Card 4 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG95b3RhJTIwZm9ydHVuZXJ8ZW58MHx8MHx8fDA%3D" alt="Toyota Fortuner">
+                <div class="details">
+                    <p class="car-name">Toyota Fortuner</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <p>(15k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 7 Seats</p>
+                        <p><i class="fa-solid fa-gas-pump"></i> Diesel</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 201 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Off-road Capability</p>
+                        <p><i class="fa-solid fa-cogs"></i> Automatic</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Toyota Fortuner">
+                        <div class="price">
+                            <p>₹8,000/day</p>
+                            <button type="submit" name="book_now" class="btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Car Card 5 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9yc2NoZSUyMDkxMXxlbnwwfHwwfHx8MA%3D%3D" alt="Porsche 911">
+                <div class="details">
+                    <p class="car-name">Porsche 911</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <p>(8k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 2 Seats</p>
+                        <p><i class="fa-solid fa-gas-pump"></i> Petrol</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 450 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Sports Performance</p>
+                        <p><i class="fa-solid fa-cogs"></i> Automatic</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Porsche 911">
+                        <div class="price">
+                            <p>₹20,000/day</p>
+                            <button type="submit" name="book_now" class="btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Car Card 6 -->
+            <div class="box">
+                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG9uZGElMjBjaXR5fGVufDB8fDB8fHww" alt="Honda City">
+                <div class="details">
+                    <p class="car-name">Honda City</p>
+                    <div class="review">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <p>(25k Reviews)</p>
+                    </div>
+                    <div class="feature">
+                        <p><i class="fa-solid fa-chair"></i> 5 Seats</p>
+                        <p><i class="fa-solid fa-gas-pump"></i> Petrol</p>
+                        <p><i class="fa-solid fa-tachometer-alt"></i> 120 HP</p>
+                        <p><i class="fa-solid fa-road"></i> Comfortable Drive</p>
+                        <p><i class="fa-solid fa-cogs"></i> Automatic</p>
+                    </div>
+                    <form action="book.php" method="post" class="booking-form">
+                        <div class="pick">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" id="location" placeholder="Enter Location" required>
+                        </div>
+                        <div class="pick">
+                            <label for="pickup_date">Pick Up Date</label>
+                            <input type="date" name="pickup_date" id="pickup_date" required>
+                        </div>
+                        <div class="pick">
+                            <label for="return_date">Return Date</label>
+                            <input type="date" name="return_date" id="return_date" required>
+                        </div>
+                        <input type="hidden" name="car_name" value="Honda City">
+                        <div class="price">
+                            <p>₹2,500/day</p>
+                            <button type="submit" name="book_now" class="btn">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support-sec">
+        <div class="txt">
+            <p class="txt1">Why <span>Choose</span> Us</p>
+        </div>
+        <div class="main-sec">
+            <div class="box">
+                <i class="fa-solid fa-certificate"></i>
+                <p class="txt1">Premium Quality</p>
+                <p>All our vehicles undergo rigorous quality checks and maintenance to ensure your safety and comfort.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <p class="txt1">Best Value</p>
+                <p>Get the most competitive rates with our transparent pricing and special offers.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-headset"></i>
+                <p class="txt1">24/7 Support</p>
+                <p>Our dedicated support team is always ready to assist you with any queries or emergencies.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <p class="txt1">Flexible Booking</p>
+                <p>Enjoy complete flexibility with our booking options and cancellation policies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="achie-sec">
+        <div class="txt">
+            <p class="txt1">Our <span>Achievement</span></p>
+            <p class="subtitle">Driving Success: Our Milestones in Car Rental Services</p>
+        </div>
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <div class="number">4000+</div>
+                <div class="label">Active Members</div>
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">3000+</div>
+                <div class="label">Car Colors</div>
+                <div class="icon"><i class="fa-solid fa-palette"></i></div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">6000+</div>
+                <div class="label">Car Models</div>
+                <div class="icon"><i class="fa-solid fa-car"></i></div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">10k</div>
+                <div class="label">Positive Ratings</div>
+                <div class="icon"><i class="fa-solid fa-star"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="start-sec">
+        <div class="start-container">
+            <div class="start-content">
+                <h2>Ready To Get Started?</h2>
+                <p class="description">
+                    Our car rental website offers a seamless and convenient experience for all your transportation needs.
+                    Whether you're planning a business trip, a weekend getaway, or a family vacation, we provide a diverse
+                    range of vehicles to suit every occasion.
+                </p>
+                <a href="contactus.html" class="cta-button">
+                    Contact Us
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="start-image">
+                <img src="verna.png" alt="Car Rental">
+            </div>
+        </div>
+    </section>
+
+    <footer class="foot-sec">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Website Terms</a>
+                <a href="contactus.html">Contact Us</a>
+                <a href="/">Privacy Policy</a>
+            </div>
+            <div class="footer-info">
+                <p class="copyright">&copy; 2025 RentFlow. All rights reserved.</p>
+                <p class="developers">Developed by <span>Ranjan</span> and <span>Rishabh</span></p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form validation
+        document.querySelectorAll('.booking-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const pickupDate = new Date(this.querySelector('#pickup_date').value);
+                const returnDate = new Date(this.querySelector('#return_date').value);
+                
+                if (returnDate <= pickupDate) {
+                    e.preventDefault();
+                    alert('Return date must be after pickup date');
+                }
+            });
+        });
+
+        // Function to check login status before booking
+        function checkLoginBeforeBooking(event) {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username');
+            
+            if (isLoggedIn !== 'true' || !username) {
+                event.preventDefault();
+                alert('Please sign in to book a car.');
+                window.location.href = 'signin.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Update all book now buttons to use the checkLoginBeforeBooking function
+        document.querySelectorAll('.booking-form button[type="submit"]').forEach(button => {
+            button.addEventListener('click', function(event) {
+                return checkLoginBeforeBooking(event);
+            });
+        });
+    </script>
+</body>
+
+</html>
